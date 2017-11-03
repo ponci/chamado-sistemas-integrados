@@ -34,6 +34,7 @@ namespace Trabalho_API
                         //
                         c.SingleApiVersion("v1", "Trabalho_API");
 
+
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
                         //c.PrettyPrint();

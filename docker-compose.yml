@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  trabalho_api:
+    image: trabalho_api
+    build:
+      context: .\Trabalho_API
+      dockerfile: Dockerfile

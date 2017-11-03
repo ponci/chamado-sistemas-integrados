@@ -1,4 +1,5 @@
-﻿using BLL.DTO;
+﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +9,38 @@ using System.Web.Http;
 
 namespace Trabalho_API.Controllers
 {
+    [Route("chamado")]
     public class ChamadoController : ApiController
     {
-        // GET api/values
-        public IEnumerable<ChamadoDTO> GetAll()
+
+        public IEnumerable<ChamadoDTO> Get()
         {
-            return null;
+            return new ChamadoBLL().BuscarTodos();
         }
 
-        // GET api/values/5
+        [Route("{idchamado}")]
         public ChamadoDTO Get(Guid idChamado)
         {
-            return new ChamadoDTO();
+            return new ChamadoBLL().BuscarPorId(idChamado);
         }
 
-        // POST api/values
+  
         public void Post([FromBody]ChamadoDTO chamado)
         {
+            new ChamadoBLL().Inserir(chamado);
         }
 
-        // PUT api/values/5
+
         public void Put(Guid idChamado, [FromBody]ChamadoDTO chamado)
         {
+            chamado.idChamado = idChamado;
+            new ChamadoBLL().Alterar(chamado);
         }
 
-        // DELETE api/values/5
+
         public void Delete(Guid idChamado)
         {
+            new ChamadoBLL().Deletar(idChamado);
         }
     }
 }
