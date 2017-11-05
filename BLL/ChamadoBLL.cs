@@ -15,9 +15,11 @@ namespace BLL
         {
             chamadoDAL = new ChamadoDAL();
         }
-        public void Inserir(ChamadoDTO chamado)
+        public Guid Inserir(ChamadoDTO chamado)
         {
+            chamado.idChamado = Guid.NewGuid();
             chamadoDAL.Inserir(chamado);
+            return chamado.idChamado;
         }
 
         public void Deletar(Guid idChamado)

@@ -102,8 +102,8 @@ namespace Trabalho_API
                         // those comments into the generated docs and UI. You can enable this by providing the path to one or
                         // more Xml comment files.
                         //
-                        //c.IncludeXmlComments(GetXmlCommentsPath());
-
+                        c.IncludeXmlComments(GetXmlCommentsPath("Trabalho_API.xml"));
+                        c.IncludeXmlComments(GetXmlCommentsPath("DTO.xml"));
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.
                         // This is supported through the "MapType" and "SchemaFilter" options:
@@ -251,6 +251,10 @@ namespace Trabalho_API
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
                     });
+        }
+        private static string GetXmlCommentsPath(string caminho)
+        {
+            return System.String.Format(@"{0}\bin\"+caminho, System.AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

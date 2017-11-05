@@ -8,12 +8,9 @@ namespace DTO.Enums
 {
     public enum StatusChamado
     {
-        Aberto = 0,
-        Fechado = 1,
-        Aberto_RH = 2,
-        Fechado_RH = 3,
-        Aberto_PIK = 4,
-        Fechado_PIK = 5
-
+        Aberto_RH = 0,
+        Fechado_RH = 1,
+        Aberto_PIK = 2,
+        Fechado_PIK = 3
     }
 }
