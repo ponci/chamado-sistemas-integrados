@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-
+using Trabalho_API.Model;
 
 namespace Trabalho_API.Controllers
 {
@@ -36,9 +36,9 @@ namespace Trabalho_API.Controllers
   /// </summary>
   /// <param name="chamado">Necessario informar obrigatoriamente o codigo do produto e status inicial</param>
   /// <returns>Guid do chamado criado</returns>
-        public Guid Post([FromBody]ChamadoDTO chamado)
+        public Guid Post([FromBody]InserirChamadoModel chamado)
         {
-            return new ChamadoBLL().Inserir(chamado);
+            return new ChamadoBLL().Inserir(chamado.idProduto, chamado.descricao, chamado.status, chamado.quantidade);
         }
 
         /// <summary>
@@ -46,10 +46,9 @@ namespace Trabalho_API.Controllers
         /// </summary>
         /// <param name="idChamado"></param>
         /// <param name="chamado">Objeto com as modificações realizadas</param>
-        public void Put(Guid idChamado, [FromBody]ChamadoDTO chamado)
+        public void Put(Guid idChamado, [FromBody]AlterarChamadoModel chamado)
         {
-            chamado.idChamado = idChamado;
-            new ChamadoBLL().Alterar(chamado);
+            new ChamadoBLL().Alterar(idChamado, chamado.status, chamado.motivo);
         }
 
 

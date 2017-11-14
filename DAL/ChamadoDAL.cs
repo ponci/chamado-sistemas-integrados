@@ -50,7 +50,7 @@ namespace DAL
 
         public void Alterar(ChamadoDTO chamado)
         {
-            using (IDbConnection dbConnection = conexao)
+            using (IDbConnection dbConnection = Conexao.Connection)
             {
                 dbConnection.Open();
                 using (var dbContextTransaction = dbConnection.BeginTransaction())
@@ -66,7 +66,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = conexao)
             {
-                dbConnection.Open();
                 return dbConnection.Query<ChamadoDTO>("SELECT * FROM chamado");
             }
         }
@@ -77,7 +76,6 @@ namespace DAL
             {
                 string sQuery = "SELECT * FROM chamado"
                                + " WHERE idChamado = @idChamado";
-                dbConnection.Open();
                 return dbConnection.Query<ChamadoDTO>(sQuery, new { idChamado = idChamado }).FirstOrDefault();
             }
         }
