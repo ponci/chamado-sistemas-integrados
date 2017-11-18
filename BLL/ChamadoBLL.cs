@@ -26,6 +26,10 @@ namespace BLL
             chamado.status = status;
             chamado.quantidade = quantidade;
             chamadoDAL.Inserir(chamado);
+
+            if (chamado.status == StatusChamado.Aberto_PIK)
+                new ApiPickingDAL().EncaminharChamadoPicking(chamado);
+
             return chamado.idChamado;
         }
 
