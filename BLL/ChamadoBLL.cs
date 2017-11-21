@@ -30,6 +30,9 @@ namespace BLL
             if (chamado.status == StatusChamado.Aberto_PIK)
                 new ApiPickingDAL().EncaminharChamadoPicking(chamado);
 
+            if (chamado.status == StatusChamado.Aberto_RH)
+                new ApiRhDAL().EncaminharChamadoRh(chamado);
+
             return chamado.idChamado;
         }
 
